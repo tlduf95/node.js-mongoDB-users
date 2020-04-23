@@ -45,14 +45,14 @@ app.post('/login', (req, res) => {
         if(!user) {
             return res.json({
                 loginSuccess: false,
-                message: 'There is no matching email'
+                message: '해당 이메일 유저가 없습니다.'
             }); 
         }
 
         user.comparePassword(req.body.password, (err, isMatch) => {
             if(!isMatch) 
             return res.json({ 
-                loginSuccess: false, message: 'Password is wrong.'
+                loginSuccess: false, message: '비밀번호가 틀렸습니다.'
             });
             
             user.generateToken((err, user) => {
