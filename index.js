@@ -39,8 +39,8 @@ app.post('/register', (req, res) => {
     });
 });
 
-app.post('/login', (req, res) => {
-    // find Database
+app.get('/login', (req, res) => {
+
     User.findOne({ email: req.body.email }, (err, user) => {
         if(!user) {
             return res.json({
