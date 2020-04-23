@@ -5,6 +5,8 @@ const port = 5000
 const bodyParser = require('body-parser');
 const { User } = require("./models/User");
 
+const config = require('./config/key');
+
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -12,15 +14,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://tlduf95:wkd1cjf1@react-mongo-first-pyky1.mongodb.net/test?retryWrites=true&w=majority'
-, {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB Conneted'))
     .catch(err => console.log(err))
 
 
 
-app.get('/', (req, res) => res.send('Hello World! 안녕하세요'))
+app.get('/', (req, res) => res.send('HELLO WORLD!!!!!!!!'))
 
 app.post('/register', (req, res) => {
     //회원가입 필요 정보 client 가져옴
